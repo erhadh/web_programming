@@ -23,6 +23,7 @@ $(document).ready(function() {
   app.route({view: 'warehouses', load: 'warehouses.html' });
   app.route({view: 'orders', load: 'orders.html' });
   app.route({view: 'suppliers', load: 'suppliers.html' });
+  app.route({view: 'istatus', load: 'items_status.html' });
 
   app.run();
 });
