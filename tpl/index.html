@@ -170,7 +170,7 @@
                                 let dashboardItems = document.getElementById("dashboard_items");
                                 let out = "";
                                 let currentDate = new Date();
-                                let currentDateRow = currentDate.getDate() + "." + currentDate.getFullYear();
+                                let currentDateRow = currentDate.getDate() + "." + currentDate.getMonth() + "." + currentDate.getFullYear();
                                 for (var i = 0; i < jsonObj.length; i++) {
                                     let count = 10 + i;
                                     out += "<tr>";
@@ -189,10 +189,6 @@
                             }
                         };
                         xhttp.send();
-                        /*const datatablesSimple = document.getElementById('datatablesSimple');
-                        if (datatablesSimple) {
-                            new simpleDatatables.DataTable(datatablesSimple);
-                        }*/
                     </script>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
