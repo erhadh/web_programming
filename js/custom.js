@@ -46,6 +46,23 @@ $(document).ready(function() {
   });
 
   app.route({
+    view: 'settings', 
+    load: 'settings.html',
+    onCreate: function() {
+      var datatablesSimple = document.getElementById('datatablesSimple');
+      if (datatablesSimple) {
+        new simpleDatatables.DataTable(datatablesSimple);
+      }
+    },
+    onReady: function() {
+      var datatablesSimple = document.getElementById('datatablesSimple');
+      if (datatablesSimple) {
+        new simpleDatatables.DataTable(datatablesSimple);
+      }
+    } 
+  });
+
+  app.route({
     view: 'warehouses', 
     load: 'warehouses.html',
     onCreate: function() {
@@ -137,3 +154,47 @@ function loginUser() {
   xhttp.send();
 }
 
+function orderItem(itemId) {
+  alert("Ordering item " + itemId);
+}
+
+function saveItem() {
+  alert("Saving item");
+}
+
+function createWarehouse() {
+  alert("Saving warehouse");
+}
+
+function createNewOrder() {
+  alert("Creating new order");
+}
+
+function createSupplier() {
+  alert("Saving supplier");
+}
+
+function register() {
+  alert("User registered! Redirecting to login");
+  window.location.replace("#login");
+}
+
+function updateUserDetails() {
+  alert("Saving users details");
+}
+
+let possibleStatuses = ["good", "warning", "low"];
+
+if (localStorage.getItem("lastStatus") == null) {
+  localStorage.setItem("lastStatus", "good");
+}
+
+function viewingItems(status) {
+  for (let i = 0; i < possibleStatuses.length; i++) {
+    if (status === possibleStatuses[i]) {
+      localStorage.setItem("lastStatus", status);
+      return;
+    }
+  }
+  localStorage.setItem("lastStatus", "good");
+}

@@ -69,86 +69,42 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Warehouses</h1>
+                        <h1 class="mt-4">Settings</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Warehouses</li>
+                            <li class="breadcrumb-item active">Settings</li>
                         </ol>
                         <div class="row">
-                            <h2>Add new item</h2>
+                            <h2>Update details</h2>
                             <div>
                                 <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter warehouse name">
-                                <small id="nameHelp" class="form-text text-muted">Item name represents warehouse name.</small>
+                                    <label for="firstName">First name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="John">
                                 </div>
                                 <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <input type="text" class="form-control" id="location" aria-describedby="locationHelp" placeholder="Warehouse location">
-                                    <small id="locationHelp" class="form-text text-muted">Where is the warehouse located.</small>
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Doe">
                                 </div>
                                 <div class="form-group">
-                                    <label for="capacity">Capacity</label>
-                                    <input type="number" class="form-control" id="capacity" aria-describedby="capacityHelp" value="1000">
-                                    <small id="capacityHelp" class="form-text text-muted">How many items warehouse can store.</small>
+                                    <label for="userEmail">Email</label>
+                                    <input type="email" class="form-control" id="userEmail" placeholder="admin@admin.com">
                                 </div>
-                                <button type="submit" class="btn btn-primary" onclick="createWarehouse()">Submit</button>
-                            </div>
+                                <div class="form-group">
+                                    <label for="oldPW">Old password</label>
+                                    <input type="password" class="form-control" id="oldPW">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPW">New password</label>
+                                    <input type="password" class="form-control" id="newPW">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPWRepeat">Repeat new password</label>
+                                    <input type="password" class="form-control" id="newPWRepeat">
+                                </div>
+                                <br>
+                                <button onclick="updateUserDetails()" type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-table me-1"></i>
-                                    All warehouses
-                                </div>
-                                <div class="card-body">
-                                    <table id="datatablesSimple">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Date added</th>
-                                                <th>Name</th>
-                                                <th>Location</th>
-                                                <th>Capacity</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Date added</th>
-                                                <th>Name</th>
-                                                <th>Location</th>
-                                                <th>Capacity</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td>WR1</td>
-                                                <td>11.3.2024</td>
-                                                <td>Warehouse 1</td>
-                                                <td>Mostar</td>
-                                                <td>1050</td>
-                                            </tr>
-                                            <tr>
-                                                <td>WR2</td>
-                                                <td>11.3.2024</td>
-                                                <td>Warehouse 2</td>
-                                                <td>Sarajevo</td>
-                                                <td>2500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>WR3</td>
-                                                <td>11.3.2024</td>
-                                                <td>Warehouse 3</td>
-                                                <td>Tuzla</td>
-                                                <td>700</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
