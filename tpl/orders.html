@@ -7,14 +7,11 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Inventory Management Software</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Inventory management software</a>
+            <a class="navbar-brand ps-3" href="#main">Inventory management software</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -28,10 +25,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#settings">Settings</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="login.html">Login</a></li>
+                        <li><a class="dropdown-item" href="#login">Login</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">Logout</a></li>
                     </ul>
@@ -44,7 +40,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="#main">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -56,10 +52,10 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="items.html">Inventory items</a>
-                                    <a class="nav-link" href="warehouses.html">Warehouses</a>
-                                    <a class="nav-link" href="orders.html">Orders</a>
-                                    <a class="nav-link" href="suppliers.html">Suppliers</a>
+                                    <a class="nav-link" href="#items">Inventory items</a>
+                                    <a class="nav-link" href="#warehouses">Warehouses</a>
+                                    <a class="nav-link" href="#orders">Orders</a>
+                                    <a class="nav-link" href="#suppliers">Suppliers</a>
                                 </nav>
                             </div>
                         </div>
@@ -73,49 +69,69 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Suppliers</h1>
+                        <h1 class="mt-4">Orders</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Suppliers</li>
+                            <li class="breadcrumb-item active">Orders</li>
                         </ol>
                         <div class="row">
-                            <h2>Add new supplier</h2>
-                            <form>
+                            <h2>Order new item</h2>
+                            <div>
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Supplier 1">
-                                    <small id="nameHelp" class="form-text text-muted">Enter supplier name.</small>
+                                    <label for="supplier">Select supplier</label>
+                                    <select class="form-control" id="supplier">
+                                      <option>Supplier 1</option>
+                                      <option>Supplier 2</option>
+                                      <option>Supplier 3</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="bank">Bank account</label>
-                                    <input type="text" class="form-control" id="bank" aria-describedby="bankHelp" placeholder="Bank account details.">
-                                    <small id="bankHelp" class="form-text text-muted">Enter full bank account details here.</small>
+                                    <label for="warehouse">Select warehouse location</label>
+                                    <select class="form-control" id="warehouse">
+                                      <option>Warehouse 1</option>
+                                      <option>Warehouse 2</option>
+                                      <option>Warehouse 3</option>
+                                    </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                                <div class="form-group">
+                                    <label for="count">Count</label>
+                                    <input type="number" class="form-control" id="count" aria-describedby="countHelp" value="3">
+                                    <small id="countHelp" class="form-text text-muted">How many items to order.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="note">Note</label>
+                                    <input type="text" class="form-control" id="note" aria-describedby="noteHelp" placeholder="Note to supplier.">
+                                    <small id="noteHelp" class="form-text text-muted">Please take good care of the items.</small>
+                                    </div>
+                                <button onclick="createNewOrder()" type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Available suppliers
+                                    Previous orders
                                 </div>
                                 <div class="card-body">
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Date added</th>
-                                                <th>Name</th>
-                                                <th>Bank</th>
+                                                <th>Date ordered</th>
+                                                <th>Supplier</th>
+                                                <th>Warehouse</th>
+                                                <th>Count</th>
+                                                <th>Note</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Date added</th>
-                                                <th>Name</th>
-                                                <th>Bank</th>
+                                                <th>Date ordered</th>
+                                                <th>Supplier</th>
+                                                <th>Warehouse</th>
+                                                <th>Count</th>
+                                                <th>Note</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -123,19 +139,26 @@
                                                 <td>1</td>
                                                 <td>11.3.2024</td>
                                                 <td>Supplier 1</td>
-                                                <td>UniCredit...</td>
+                                                <td>Warehouse 1</td>
+                                                <td>3</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>11.3.2024</td>
                                                 <td>Supplier 2</td>
-                                                <td>Intesa...</td>
+                                                <td>Warehouse 2</td>
+                                                <td>3</td>
+                                                <td>Handle carefully.</td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
                                                 <td>11.3.2024</td>
                                                 <td>Supplier 3</td>
-                                                <td>ProCredit...</td>
+                                                <td>Warehouse 1</td>
+                                                <td>3</td>
+                                                <td></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -158,12 +181,5 @@
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
